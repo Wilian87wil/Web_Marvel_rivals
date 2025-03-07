@@ -1,0 +1,44 @@
+HELP.md
+
+# Carpetas y archivos generados por Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/
+mvnw
+mvnw.cmd
+
+# Excepciones para `target/` en casos específicos (si es necesario)
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Archivos y configuraciones de IDEs
+
+## Spring Tool Suite (STS)
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+## IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+## NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Archivos de compilación y construcción
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code
+.vscode/
