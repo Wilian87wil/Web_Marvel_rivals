@@ -1,4 +1,4 @@
-package com.wilian.test.marvel_rivals.models;
+package com.wilian.test.marvel_rivals.models.mySql;
 
 import jakarta.persistence.*;
 

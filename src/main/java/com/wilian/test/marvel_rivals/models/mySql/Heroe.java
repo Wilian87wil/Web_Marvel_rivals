@@ -1,8 +1,8 @@
-package com.wilian.test.marvel_rivals.models;
+package com.wilian.test.marvel_rivals.models.mySql;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.wilian.test.marvel_rivals.models.noMysql.HeroePoder;
 import jakarta.persistence.*;
-import org.springframework.context.annotation.Primary;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class Heroe {
 
     private String lore;
 
-    @OneToMany(mappedBy = "heroe")
+    @OneToMany(mappedBy = "heroe", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("heroe")
     private List<Stats> stats;
 
