@@ -1,11 +1,10 @@
 package com.wilian.test.marvel_rivals.service;
 
 import com.wilian.test.marvel_rivals.models.mySql.Heroe;
+import com.wilian.test.marvel_rivals.models.mySql.User;
 import com.wilian.test.marvel_rivals.models.mySql.respaldo.HeroeBorrados;
 import com.wilian.test.marvel_rivals.models.noMysql.HeroePoder;
-import com.wilian.test.marvel_rivals.repositorie.HeroeBorradosRepository;
-import com.wilian.test.marvel_rivals.repositorie.HeroePoderReposity;
-import com.wilian.test.marvel_rivals.repositorie.HeroeRepository;
+import com.wilian.test.marvel_rivals.repositorie.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,10 @@ public class HeroeServicesImpl implements HeroeService{
     private HeroePoderReposity poderReposity;
     @Autowired
     private HeroeBorradosRepository borradosRepository;
-
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private UserBorradoRepository userBorradoRepository;
     @Override
     public Optional<Heroe> buscarPorId(Integer id) {
         Optional<Heroe> heroe = repository.findByIdFetchStats( id);
@@ -80,6 +82,44 @@ public class HeroeServicesImpl implements HeroeService{
             }
         }
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<User> buscarPorIdUser(Integer id) {
+        Optional<User> userRepositoryById = userRepository.findById(id);
+        if (userRepositoryById.isPresent()) {
+            return userRepositoryById;
+        }else {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<User> EditarUser(Integer id, User user) {
+        Optional<User> userBuscado = userRepository.findById(id);
+        if (userBuscado.isPresent()){
+            User user1 = userBuscado.get();
+            user1.setNombre(user.getNombre());
+            user1.setEmail(user.getEmail());
+            user1.setPassword(user.getPassword());
+            user1.setFecha_registro(user.getFecha_registro());
+            userRepository.save(user1);
+            return Optional.of(user1);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<User> eliminarUser(Integer id) {
+        Optional<User> userfind = userRepository.findById(id);
+        repository.deleteById(id);
+        return userfind;
+    }
+
+    @Override
+    public Optional<User> recuperarIdUser(Integer id) {
+        userBorradoRepository.deleteById(id);
+        return userRepository.findById(id);
     }
 
     private Optional<Heroe> recuperarHeroe(Integer id, HeroeBorrados heroe) {
