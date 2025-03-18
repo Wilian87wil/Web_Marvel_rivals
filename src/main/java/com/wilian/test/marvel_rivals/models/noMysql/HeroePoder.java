@@ -18,13 +18,14 @@ public class HeroePoder {
     @JsonIgnore
     private String id;
 
-    private List<Poder> poderes=new ArrayList<>();
+    private List<Poder> powers =new ArrayList<>();
 
     @JsonIgnore
     @Field(write = Field.Write.ALWAYS)
     private Date deleted_at;
+
     @JsonIgnore
-    private String estado;
+    private String state;
 
     public Date getDeleted_at() {
         return deleted_at;
@@ -34,12 +35,12 @@ public class HeroePoder {
         this.deleted_at = deleted_at;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getState() {
+        return state;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getId() {
@@ -50,11 +51,11 @@ public class HeroePoder {
         this.id = id;
     }
 
-    public List<Poder> getPoderes() {
-        return poderes;
+    public List<Poder> getPowers() {
+        return powers;
     }
 
-    public void setPoderes(List<Poder> poderes) {
-        this.poderes = poderes;
+    public void setPowers(List<Poder> powers) {
+        this.powers = powers;
     }
 }

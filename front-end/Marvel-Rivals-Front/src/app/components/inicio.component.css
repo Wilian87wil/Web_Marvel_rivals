@@ -1,0 +1,79 @@
+video{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-marvel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-left: 50%;
+  margin-top: 200px;
+  transform: translate(-50%,-50%) scale(0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.marco-marvel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 50%;
+  margin-top: 400px;
+  transform: translate(-50%,-50%) scale(0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-text{
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 100%;
+  margin-left: 48%;
+  transform: translate(-50%,-50%) scale(3);
+}
+.login-container{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  transform: translate(-50%,-50%) scale(2.5);
+  margin-top: 133%;
+  margin-left: 50%;
+  gap: 10px;
+}
+
+.button-class{
+  position: absolute;
+  margin-top: 101%;
+  margin-left: 32%;
+  transform: scale(0.8);
+}
+
+p{
+  position: absolute;
+  margin-top: -58.6%;
+  margin-left: 30%;
+  transform: scale(1.5);
+}
+
+.button-ocultar{
+  position: absolute;
+  transform: translate(-50%,-50%) scale(0.15);
+  top: 0;
+  left: 0;
+  margin-top: 45%;
+  margin-left: 92%;
+}
+.button-ocultar:hover{
+  filter: brightness(0.5);
+}

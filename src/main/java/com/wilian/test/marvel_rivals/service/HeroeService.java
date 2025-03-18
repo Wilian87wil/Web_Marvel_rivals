@@ -7,19 +7,19 @@ import java.util.Optional;
 
 public interface HeroeService {
 
-    Optional<Heroe> buscarPorId(Integer id);
+    Optional<Heroe> findHeroId(Integer id);
 
-    Optional<Heroe> Editar(Integer id ,Heroe heroe);
+    Optional<Heroe> editHero(Integer id , Heroe heroe);
 
-    Optional<String> eliminar(Integer id);
+    Optional<String> deletedHero(Integer id);
 
-    Optional<Heroe> recuperarId(Integer id);
+    Optional<Heroe> recoveryHero(Integer id);
 
-    Optional<User> buscarPorIdUser(Integer id);
+    Optional<User> EditUser(Integer id , User user);
 
-    Optional<User> EditarUser(Integer id ,User user);
+    Optional<User> deletedUser(Integer id);
 
-    Optional<User> eliminarUser(Integer id);
+    Optional<User> recoverUserId(Integer id);
 
-    Optional<User> recuperarIdUser(Integer id);
+    Optional<User> findUser(String nombre, String password, String email);
 }

@@ -1,12 +1,11 @@
 package com.wilian.test.marvel_rivals.controller;
 
 import com.wilian.test.marvel_rivals.models.mySql.Heroe;
+import com.wilian.test.marvel_rivals.models.mySql.User;
 import com.wilian.test.marvel_rivals.service.HeroeService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
@@ -14,34 +13,67 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
+import java.util.Optional;
+
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ApiController {
+
     @Autowired
     private HeroeService service;
 
-   private final OAuth2AuthorizedClientService authorizedClientService;
+    @Autowired
+    private OAuth2AuthorizedClientService authorizedClientService;
 
-    public ApiController(OAuth2AuthorizedClientService authorizedClientService) {
-        this.authorizedClientService = authorizedClientService;
+    //METHODS API USER
+
+    @PostMapping("buscar-User")
+    public ResponseEntity<Boolean> Users(@RequestBody User user){
+        System.out.println("Solicitud recibida en buscarUser: " + user.getNombre() + " | " + user.getEmail() + " | " + user.getPassword());
+        if (user.getId()==null || user.getId()<0){
+            if ((user.getNombre()==null || user.getNombre().isEmpty()) ||
+                    (user.getPassword()==null || user.getPassword().isEmpty()) ||
+                    (user.getEmail()==null||user.getEmail().isEmpty())){
+                System.out.println("AQUI CAE ERROR1");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+            }else {
+                Optional<User> user1 = service.findUser(user.getNombre(), user.getPassword(), user.getEmail());
+                if (user1.isPresent()){
+                    System.out.println("AQUI CAYO CORRECTO");
+                    return ResponseEntity.ok(true);
+                }else {
+                    System.out.println("AQUI CAE ERROR 3");
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+                }
+            }
+        }
+        System.out.println("AQUI CAE ERROR 2");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+
     }
 
+    //METHODS API HERO
+
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<Heroe> buscarHeroe(@PathVariable Integer id){
-        return ResponseEntity.ok(service.buscarPorId(id).get());
+    public ResponseEntity<Heroe> findHero(@PathVariable Integer id){
+        return ResponseEntity.ok(service.findHeroId(id) .get());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Heroe> editar(@RequestBody Heroe heroe, @PathVariable Integer id){
-        return ResponseEntity.ok(service.Editar(id,heroe).get());
+    public ResponseEntity<Heroe> editHero(@RequestBody Heroe heroe, @PathVariable Integer id){
+        return ResponseEntity.ok(service.editHero(id,heroe).get());
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<String > deleted(@PathVariable Integer id){
-        return ResponseEntity.ok(service.eliminar(id).get());
+    public ResponseEntity<String > deletedHero(@PathVariable Integer id){
+        return ResponseEntity.ok(service.deletedHero(id).get());
     }
     @PutMapping("/recuperar/{id}")
-    public ResponseEntity<Heroe> recuprar(@PathVariable Integer id){
-        return ResponseEntity.ok(service.recuperarId(id).get());
+    public ResponseEntity<Heroe> recoveryHero(@PathVariable Integer id){
+        return ResponseEntity.ok(service.recoveryHero(id).get());
     }
+
+    //METHODS GOOGLE OAUTH2.0
     @GetMapping("/gmail/messages")
     public String listMessages(Authentication authentication){
         if (authentication instanceof OAuth2AuthenticationToken token){
@@ -63,5 +95,10 @@ public class ApiController {
             }
         }
         return "NO SE AUTENTICO";
+    }
+
+    @GetMapping("/login/google/redirect")
+    public void redirectToGoogle(HttpServletResponse response) throws IOException {
+        response.sendRedirect("/oauth2/authorization/google");
     }
 }

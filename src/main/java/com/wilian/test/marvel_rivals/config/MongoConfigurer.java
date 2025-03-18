@@ -2,8 +2,8 @@ package com.wilian.test.marvel_rivals.config;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import com.wilian.test.marvel_rivals.config.convertersPropios.PoderReadConverter;
-import com.wilian.test.marvel_rivals.config.convertersPropios.PoderWrintingConverter;
+import com.wilian.test.marvel_rivals.config.convertersPropios.PowerReadConverter;
+import com.wilian.test.marvel_rivals.config.convertersPropios.PowerWrintingConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
@@ -27,8 +27,8 @@ public class MongoConfigurer extends AbstractMongoClientConfiguration {
     @Override
     public MongoCustomConversions customConversions() {
         List<Converter<?,?>> converters = new ArrayList<>();
-        converters.add(new PoderReadConverter());
-        converters.add(new PoderWrintingConverter());
+        converters.add(new PowerReadConverter());
+        converters.add(new PowerWrintingConverter());
         return new MongoCustomConversions(converters);
     }
 }
