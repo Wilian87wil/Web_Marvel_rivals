@@ -21,5 +21,7 @@ public interface HeroeService {
 
     Optional<User> recoverUserId(Integer id);
 
-    Optional<User> findUser(String nombre, String password, String email);
+    Optional<User> findUser(String password, String email);
+
+    Optional<User> registerUser(String name,String password,String email);
 }

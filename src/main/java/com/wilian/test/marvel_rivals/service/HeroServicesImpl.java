@@ -26,13 +26,38 @@ public class HeroServicesImpl implements HeroeService{
     //USER METHODS
 
     @Override
-    public Optional<User> findUser(String name, String password, String email) {
-        Optional<User> user = userRepository.buscarUsuario(name, password, email);
+    public Optional<User> findUser(String password, String email) {
+        Optional<User> user = userRepository.buscarUsuario(password, email);
         if (user.isPresent()){
+            System.out.println("Se encontro");
             return user;
         }else {
+            System.out.println("No se encontro");
             return Optional.empty();
         }
+    }
+
+    @Override
+    public Optional<User> registerUser(String name,String password,String email){
+        User user = new User();
+          if (userRepository.DebugUserName(name).isPresent()){
+              user.setNombre("Ya existe el nombre que colocaste, utiliza otro porfavor");
+              user.setPassword(password);
+              user.setEmail(email);
+              return Optional.of(user);
+          } else if (userRepository.DebugUserEmail(email).isPresent()) {
+              user.setEmail("Ya existe el email que colocaste, utiliza otro porfavor");
+              user.setNombre(name);
+              user.setPassword(password);
+              return Optional.of(user);
+          }
+        user= new User();
+        user.setNombre(name);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setFecha_registro(new Date())  ;
+        userRepository.save(user);
+        return userRepository.buscarUsuario(user.getPassword(),user.getEmail());
     }
 
     @Override

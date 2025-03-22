@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -28,28 +29,51 @@ public class ApiController {
 
     //METHODS API USER
 
-    @PostMapping("buscar-User")
-    public ResponseEntity<Boolean> Users(@RequestBody User user){
-        System.out.println("Solicitud recibida en buscarUser: " + user.getNombre() + " | " + user.getEmail() + " | " + user.getPassword());
+    @PostMapping("/find-user")
+    public ResponseEntity<User> Users(@RequestBody User user){
+        System.out.println("Solicitud recibida en buscarUser: " + user.getEmail() + " | " + user.getPassword());
         if (user.getId()==null || user.getId()<0){
-            if ((user.getNombre()==null || user.getNombre().isEmpty()) ||
-                    (user.getPassword()==null || user.getPassword().isEmpty()) ||
+            if ((user.getPassword()==null || user.getPassword().isEmpty()) ||
                     (user.getEmail()==null||user.getEmail().isEmpty())){
-                System.out.println("AQUI CAE ERROR1");
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }else {
-                Optional<User> user1 = service.findUser(user.getNombre(), user.getPassword(), user.getEmail());
+                Optional<User> user1 = service.findUser(user.getPassword(), user.getEmail());
                 if (user1.isPresent()){
-                    System.out.println("AQUI CAYO CORRECTO");
-                    return ResponseEntity.ok(true);
+                    System.out.println("Entro aqui 1");
+                    return ResponseEntity.ok(user1.get());
                 }else {
-                    System.out.println("AQUI CAE ERROR 3");
-                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+                    System.out.println("Entro aqui 2");
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
                 }
             }
         }
-        System.out.println("AQUI CAE ERROR 2");
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+    }
+
+    @PostMapping("/register-user")
+    public ResponseEntity<User> registerUser(@RequestBody User user){
+        if ((user.getPassword()==null || user.getPassword().isEmpty()) ||
+                (user.getEmail()==null||user.getEmail().isEmpty()) ||
+                (user.getNombre()==null || user.getNombre().isEmpty())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }else{
+            Optional<User> user1 = service.registerUser(user.getNombre(), user.getPassword(), user.getEmail());
+            if (user1.isPresent()){
+                System.out.println(user1.get().getNombre() + " || " + user1.get().getEmail() + " || el usuario del services lo que esta devolviendo");
+                if (Objects.equals(user1.get().getNombre(),"Ya existe el nombre que colocaste, utiliza otro porfavor")){
+                     System.out.println("Cae aqui nombre igual");
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(user1.get());
+                }
+                if (Objects.equals(user1.get().getEmail(),("Ya existe el email que colocaste, utiliza otro porfavor"))) {
+                     System.out.println("Cae aqui email igual");
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(user1.get());
+                }
+                return ResponseEntity.ok(user1.get());
+
+            }else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
+        }
 
     }
 

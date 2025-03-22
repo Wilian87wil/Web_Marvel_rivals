@@ -1,0 +1,132 @@
+<div class="inicio">
+
+  <!--target Video-->
+  <video autoplay loop disablePictureInPicture [ngStyle]="{'opacity':!ocultar?'0.5':'1'}">
+    <source src="/video/intro-marvel.mp4" type="video/mp4">
+  </video>
+  <!--contenedor login-->
+  <div class="content-login" *ngIf="userlogin">
+
+  </div>
+  <div class="content-logout" *ngIf="!userlogin">
+    <div class="image" *ngIf="!ocultar">
+
+      <div class="image-marvel">
+        <img src="/logo-marvel.png" alt="Imagen dinámica">
+      </div>
+
+      <div class="marco-marvel" *ngIf="!showRegister">
+
+        <img src="/marco-login.png" alt="Imagen dinámica">
+
+        <div>
+          <label class="login-text">LOGIN</label>
+
+          <form (ngSubmit)="onSubmit()">
+            <div class="login-container">
+
+              <div>
+                <label for="email" class="email-label">email:</label>
+                <div>
+                  <input id="email" class="input-email" placeholder="email" [(ngModel)]="usuario.email" name="email">
+                </div>
+              </div>
+
+              <div>
+                <label for="password" class="password-label">password:</label>
+                <div>
+                  <input id="password" class="input-password" placeholder="password" [(ngModel)]="usuario.password"
+                    name="password">
+                </div>
+              </div>
+
+              <button class="button-class" type="submit">LOGIN</button>
+
+            </div>
+
+            <div>
+              <p>¿No tienes una cuenta? <a (click)="enableRegister()" style="cursor: pointer; color:#0064fa;">Registrate
+                  aqui</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--contenedor button-->
+    <img src="/logo-hidden.png" alt="Imagen dinámica" (click)="methodocultar()" class="button-ocultar"
+      [ngStyle]="{'opacity':ocultar?'0.2':'0.6'}">
+
+    <!--contenedor message err-->
+    <div class="content-err" [ngStyle]="{'transform':hidenerr?'scale(0.9)':'scale(0)','opacity':ocultar?'0':'1'}">
+
+      <img src="/cuadro-err/button-close.png" alt="button-close" class="button-close" (click)="closeErr()">
+
+      <img src="/cuadro-err/logo-jeff.png" alt="logo-jeff" class="logo-jeff" (click)="playAudio()">
+
+      <h1 class="mensaje-err" *ngIf="!mostrarErrMensaje">
+        Ocurrió un problema al iniciar sesión, verifique que haya
+        <br>
+        &nbsp; &nbsp; &nbsp; &nbsp;escrito todo bien, o tal vez no está registrado!!
+      </h1>
+
+      <a class="registrarse" (click)="enableRegister()" style="cursor: pointer; color: #0064fa;"
+        *ngIf="!mostrarErrMensaje">registrate aqui</a>
+
+      <h1 class="mensajeErr-register" *ngIf="mostrarErrMensaje">{{mensajeErr}}</h1>
+
+      <img src="/cuadro-err/cuadro-mensaje-error.png" alt="cuadro-err" class="cuadro-err">
+
+    </div>
+
+    <!--contenedor register-->
+    <div *ngIf="!ocultar">
+
+      <div class="content-register" *ngIf="showRegister">
+
+        <div class="marco-marvel">
+
+          <img src="/marco-login.png" alt="Imagen dinámica">
+
+          <div>
+            <label class="login-text">REGISTER</label>
+            <form (ngSubmit)="onSubmitRegister()">
+
+              <div class="login-container">
+                <div>
+                  <label for="nombre" class="nombre-label">nombre:</label>
+                  <div>
+                    <input id="nombre" class="input-nombre" placeholder="nombre" [(ngModel)]="usuario.nombre"
+                      name="nombre">
+                  </div>
+                </div>
+
+                <div>
+                  <label for="email" class="email-label">email:</label>
+                  <div>
+                    <input id="email" class="input-email" placeholder="email" [(ngModel)]="usuario.email" name="email">
+                  </div>
+                </div>
+
+                <div>
+                  <label for="password" class="password-label">password:</label>
+                  <div>
+                    <input id="password" class="input-password" placeholder="password" [(ngModel)]="usuario.password"
+                      name="password">
+                  </div>
+                </div>
+
+                <button class="button-class-register" type="submit">REGISTER</button>
+
+              </div>
+              <div>
+                <p>¿Tienes una cuenta? <a (click)="enableRegister()" style="cursor: pointer; color:#0064fa;">Logeate
+                    aqui</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
