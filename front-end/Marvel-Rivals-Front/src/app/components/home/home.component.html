@@ -1,1 +1,28 @@
-<p>home works!</p>
+<div><!--contenedor de todo-->
+
+    <img src="/home/imagen-home.jpg" alt="home" class="image-home">
+    
+    <!--contenedor de los heroes en grid-->
+    <div class="heros-container">
+
+        <!--es un div que hace de for-->
+        <div *ngFor="let hero of heros; let i=index ">
+
+            <!--contenido de cada casilla del grid-->
+            <div class="heros" (click)="selectHero(hero)" (mouseenter)="hover=i" (mouseleave)="hover=null" 
+            [ngStyle]="{'transform':hover===i?'scale(1.3)':'scale(1)','z-index':hover===i?'999':''}">
+
+            <img [src]="hero.url_image" alt="imagen-hero" class="img-hero" *ngIf="hover!==i">
+
+            <video [src]="hero.url_video" class="img-hero" autoplay [muted]="true" disablePictureInPicture *ngIf="hover===i"></video>
+             
+                <h1 class="Nombre-hero" 
+                    [ngStyle]="{'margin-left':hero.nombre.length<15?'40px':''
+                    , 'margin-top':hero.nombre.length<15?'265px':''}">
+                        {{hero.nombre}}</h1>
+                        
+                <img src="/home/tarjetas-hero.png" alt="imagen-tarjeta" class="tarjetas-hero">    
+            </div>
+        </div>
+    </div>
+</div>

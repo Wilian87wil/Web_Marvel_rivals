@@ -9,6 +9,6 @@ import java.util.Optional;
 
 public interface HeroRepository extends CrudRepository<Heroe,Integer> {
 
-    @Query("SELECT h FROM Heroe h LEFT JOIN FETCH h.stats WHERE h.id = :id")
+    @Query("SELECT h FROM Heroe h LEFT JOIN FETCH h.stats LEFT JOIN FETCH h.urls_img WHERE h.id = :id")
     Optional<Heroe> findByIdFetchStats(@Param("id") Integer id);
 }

@@ -25,6 +25,16 @@ public class HeroDeleted {
 
     private String  accion;
 
+    private String url_image_respaldo;
+
+    public String getUrl_image_respaldo() {
+        return url_image_respaldo;
+    }
+
+    public void setUrl_image_respaldo(String url_image_respaldo) {
+        this.url_image_respaldo = url_image_respaldo;
+    }
+
     public Integer getId_respaldo() {
         return id_respaldo;
     }

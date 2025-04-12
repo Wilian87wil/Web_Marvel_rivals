@@ -22,7 +22,6 @@ public class SecurityConfig {
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/oauth2/authorization/google")
-                        .defaultSuccessUrl("/buscar/38", true)
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")

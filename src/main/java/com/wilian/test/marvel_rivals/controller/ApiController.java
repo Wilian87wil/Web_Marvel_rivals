@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -78,10 +79,15 @@ public class ApiController {
     }
 
     //METHODS API HERO
+    @GetMapping("/findAll")
+    public ResponseEntity<List<Heroe>> findAll(){
+        Optional<List<Heroe>> heroes = service.HerofindAll();
+        return heroes.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
 
     @GetMapping("/buscar/{id}")
     public ResponseEntity<Heroe> findHero(@PathVariable Integer id){
-        return ResponseEntity.ok(service.findHeroId(id) .get());
+        return ResponseEntity.ok(service.findHeroId(id).get());
     }
 
     @PutMapping("/{id}")

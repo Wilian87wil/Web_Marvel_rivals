@@ -20,10 +20,8 @@ export class AuthService {
     const user = this.getUser(); 
   
     if (user !== null) {
-      
       return true; 
     } else {
-      
       return false; 
     }
   }

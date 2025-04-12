@@ -18,7 +18,7 @@ public class HeroePoder {
     @JsonIgnore
     private String id;
 
-    private List<Poder> powers =new ArrayList<>();
+    private List<Poder> poderes =new ArrayList<>();
 
     @JsonIgnore
     @Field(write = Field.Write.ALWAYS)
@@ -51,11 +51,11 @@ public class HeroePoder {
         this.id = id;
     }
 
-    public List<Poder> getPowers() {
-        return powers;
+    public List<Poder> getPoderes() {
+        return poderes;
     }
 
-    public void setPowers(List<Poder> powers) {
-        this.powers = powers;
+    public void setPoderes(List<Poder> poderes) {
+        this.poderes = poderes;
     }
 }

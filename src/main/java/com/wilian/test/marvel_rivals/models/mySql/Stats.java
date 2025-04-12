@@ -2,16 +2,16 @@ package com.wilian.test.marvel_rivals.models.mySql;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "stats")
-public class Stats {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Entity
+    @Table(name = "stats")
+    public class Stats {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer id;
 
-    private String nombre;
+        private String nombre;
 
-    private Integer cantidad;
+        private Integer cantidad;
 
     @ManyToOne()
     @JoinColumn(name = "id_hero")

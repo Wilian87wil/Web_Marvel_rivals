@@ -1,0 +1,30 @@
+<div class="container-1"  >
+    <img [src]="hero.urls_img.fondo_url" alt="imagen de fondo" class="Image-fondo"/>
+    <div class="Image-png">
+        <img [src]="hero.urls_img.personaje_url" alt="imagen png" >
+    </div>
+    <div>   
+        <div class="name-personaje">
+            @if(hero.nombre.length>10) {
+                <h1 class="text-name">{{hero.nombre.split(' ')[0]}}</h1>
+                <h1 style="color: black; font-size: 50px; text-transform: uppercase; margin-left: 50px;">{{hero.nombre.split(' ').slice(1).join(' ')}}</h1>
+            }@else {
+                <h1 class="text-name">{{hero.nombre}}</h1><br/>
+
+            }
+        </div>
+
+        <div class="img-logo-png">
+            <img [src]="hero.urls_img.logo_url" alt="imagen-logo"/>
+        </div>
+
+        <div class="img-logo-rol-png">
+            <img [src]="hero.urls_img.logo_rol_url" alt="logo-rol"/>
+        </div>
+    </div>
+
+ <div class="description-hero">
+        <h1>{{hero.descripcion}}</h1>
+    </div>
+
+</div>

@@ -3,12 +3,14 @@ package com.wilian.test.marvel_rivals.service;
 import com.wilian.test.marvel_rivals.models.mySql.Heroe;
 import com.wilian.test.marvel_rivals.models.mySql.User;
 import com.wilian.test.marvel_rivals.models.mySql.respaldo.HeroDeleted;
+import com.wilian.test.marvel_rivals.models.mySql.respaldo.UserBackup;
 import com.wilian.test.marvel_rivals.models.noMysql.HeroePoder;
 import com.wilian.test.marvel_rivals.repositorie.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 @Service
 public class HeroServicesImpl implements HeroeService{
@@ -78,24 +80,34 @@ public class HeroServicesImpl implements HeroeService{
     @Override
     public Optional<User> deletedUser(Integer id) {
         Optional<User> userfind = userRepository.findById(id);
-        heroRepository.deleteById(id);
+        userRepository.deleteById(id);
         return userfind;
     }
 
     @Override
-    public Optional<User> recoverUserId(Integer id) {
-        userDeletedRepository.deleteById(id);
-        return userRepository.findById(id);
+    public Optional<UserBackup> recoverUserId(Integer id) {
+        return userDeletedRepository.findById(id)
+                .map(userBackup -> {
+                    userBackup.setAccion("RECUPERAR");
+                    userDeletedRepository.deleteById(id);
+                    return userBackup;
+                });
     }
 
+
     //HERO METHODS
+    @Override
+    public Optional<List<Heroe>> HerofindAll() {
+        return Optional.of((List<Heroe>) heroRepository.findAll());
+    }
+
 
     @Override
     public Optional<Heroe> findHeroId(Integer id) {
         Optional<Heroe> heroe = heroRepository.findByIdFetchStats( id);
         Heroe heroe1 = heroe.get();
         Optional<HeroePoder> poder = powerRepository.findById(heroe1.getNombre());
-
+        System.out.println();
         heroe1.setHeroePoder(poder.get());
         return Optional.ofNullable(heroe1);
     }
@@ -113,7 +125,7 @@ public class HeroServicesImpl implements HeroeService{
             heroRepository.save(heroe_existente);
             HeroePoder heroePoder_encontrado = powerRepository.findById(heroe_existente.getHeroePoder().getId()).get();
             HeroePoder heroePoder_nuevo = heroe.getHeroePoder();
-            heroePoder_encontrado.setPowers(heroePoder_nuevo.getPowers());
+            heroePoder_encontrado.setPoderes(heroePoder_nuevo.getPoderes());
             powerRepository.save(heroePoder_encontrado);
             heroe_existente.setHeroePoder(heroePoder_encontrado);
             return Optional.of(heroe_existente);

@@ -21,12 +21,36 @@ public class Heroe {
 
     private String lore;
 
-    @OneToMany(mappedBy = "heroe", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private String url_image;
+
+    private String url_video;
+
+    @OneToMany(mappedBy = "heroe", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("heroe")
     private List<Stats> stats;
 
     @Transient
     private HeroePoder heroePoder;
+
+    @OneToOne(mappedBy = "heroe",fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("heroes")
+    private Img urls_img;
+
+    public String getUrl_video() {
+        return url_video;
+    }
+
+    public void setUrl_video(String url_video) {
+        this.url_video = url_video;
+    }
+
+    public String getUrl_image() {
+        return url_image;
+    }
+
+    public void setUrl_image(String url_image) {
+        this.url_image = url_image;
+    }
 
     public HeroePoder getHeroePoder() {
         return heroePoder;
@@ -82,5 +106,13 @@ public class Heroe {
 
     public void setStats(List<Stats> stats) {
         this.stats = stats;
+    }
+
+    public Img getUrls_img() {
+        return urls_img;
+    }
+
+    public void setUrls_img(Img urls_img) {
+        this.urls_img = urls_img;
     }
 }

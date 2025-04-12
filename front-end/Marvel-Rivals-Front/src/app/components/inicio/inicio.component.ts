@@ -54,7 +54,7 @@ export class InicioComponent implements OnInit{
 
   onSubmitRegister():void{
     if(this.usuario.nombre==null||this.usuario.email==null||this.usuario.password==null){
-      this.mensajeErr="llene todos los campos porfavor"
+      this.mensajeErr="Llene todos los campos porfavor."
       this.mostrarErrMensaje=true;
       this.hidenerr=true;
     }else{
@@ -140,6 +140,11 @@ export class InicioComponent implements OnInit{
 
   enableRegister(){
     this.showRegister=!this.showRegister;
+    this.audio.pause();
+    const video = document.querySelector("video");
+    if(video){
+      video.muted=false;
+    }
     if(this.hidenerr=true){
       this.hidenerr=false;
     }
@@ -147,7 +152,6 @@ export class InicioComponent implements OnInit{
   }
 
   userRegisterSuccessful():void{
-    console.log("ENTRO AQUI");
     
     this.authservices.setUser(this.usuario);
     this.router.navigate(['/home']);
