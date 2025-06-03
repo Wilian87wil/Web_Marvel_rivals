@@ -81,8 +81,12 @@ public class ApiController {
     //METHODS API HERO
     @GetMapping("/findAll")
     public ResponseEntity<List<Heroe>> findAll(){
-        Optional<List<Heroe>> heroes = service.HerofindAll();
-        return heroes.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+        List<Heroe> heroes = service.HerofindAll();
+        if (heroes.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }else {
+            return ResponseEntity.ok(heroes);
+        }
     }
 
     @GetMapping("/buscar/{id}")

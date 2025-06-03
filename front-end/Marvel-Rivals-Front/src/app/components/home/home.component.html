@@ -14,14 +14,12 @@
 
             <img [src]="hero.url_image" alt="imagen-hero" class="img-hero" *ngIf="hover!==i">
 
+
             <video [src]="hero.url_video" class="img-hero" autoplay [muted]="true" disablePictureInPicture *ngIf="hover===i"></video>
              
-                <h1 class="Nombre-hero" 
-                    [ngStyle]="{'margin-left':hero.nombre.length<15?'40px':''
-                    , 'margin-top':hero.nombre.length<15?'265px':''}">
-                        {{hero.nombre}}</h1>
-                        
-                <img src="/home/tarjetas-hero.png" alt="imagen-tarjeta" class="tarjetas-hero">    
+            
+            <img src="/home/tarjetas-hero.png" alt="imagen-tarjeta" class="tarjetas-hero">
+            <div class="class-div" [ngStyle]="{'margin-top':hover===i?'-10px':''}">{{hero.nombre}}</div>        
             </div>
         </div>
     </div>

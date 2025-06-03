@@ -18,8 +18,11 @@ public class Img {
 
     private String logo_rol_url;
 
+    private String url_img_logo_pj;
+
     @OneToOne
-    @JoinColumn(name = "id_hero")
+    @MapsId
+    @JoinColumn(name = "id")
     private Heroe heroe;
 
     public String getFondo_url() {
@@ -52,5 +55,13 @@ public class Img {
 
     public void setLogo_rol_url(String logo_rol_url) {
         this.logo_rol_url = logo_rol_url;
+    }
+
+    public String getUrl_img_logo_pj() {
+        return url_img_logo_pj;
+    }
+
+    public void setUrl_img_logo_pj(String url_img_logo_pj) {
+        this.url_img_logo_pj = url_img_logo_pj;
     }
 }

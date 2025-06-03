@@ -5,14 +5,14 @@ import jakarta.persistence.*;
     @Entity
     @Table(name = "stats")
     public class Stats {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
 
-        private String nombre;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-        private Integer cantidad;
+    private String nombre;
 
+    private String cantidad;
     @ManyToOne()
     @JoinColumn(name = "id_hero")
     private Heroe heroe;
@@ -33,11 +33,11 @@ import jakarta.persistence.*;
         this.nombre = nombre;
     }
 
-    public Integer getCantidad() {
+    public String getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(Integer cantidad) {
+    public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
 

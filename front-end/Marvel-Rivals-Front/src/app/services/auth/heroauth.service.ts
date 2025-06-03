@@ -13,7 +13,7 @@ export class HeroauthService {
 
   SetHero(hero:Hero){
     console.log("Guardando Hero")
-    console.log(hero)
+    console.log(hero.heroePoder.poderes[0])
         sessionStorage.setItem('hero',JSON.stringify(hero,replacer))
   }
 

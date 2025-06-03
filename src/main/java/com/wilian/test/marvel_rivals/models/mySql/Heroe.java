@@ -36,6 +36,18 @@ public class Heroe {
     @JsonIgnoreProperties("heroes")
     private Img urls_img;
 
+    @OneToOne(mappedBy = "heroe",fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("heroes")
+    private Color color;
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public String getUrl_video() {
         return url_video;
     }

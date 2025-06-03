@@ -97,17 +97,21 @@ public class HeroServicesImpl implements HeroeService{
 
     //HERO METHODS
     @Override
-    public Optional<List<Heroe>> HerofindAll() {
-        return Optional.of((List<Heroe>) heroRepository.findAll());
+    public List<Heroe> HerofindAll() {
+        List<Heroe> heroes = heroRepository.findAllFetch();
+        heroes.forEach(h->{
+            Optional<HeroePoder> poder = powerRepository.findById(h.getNombre());
+            poder.ifPresent(h::setHeroePoder);
+        });
+        return heroes;
     }
 
 
     @Override
     public Optional<Heroe> findHeroId(Integer id) {
-        Optional<Heroe> heroe = heroRepository.findByIdFetchStats( id);
+        Optional<Heroe> heroe = heroRepository.findByIdFetchStats(id);
         Heroe heroe1 = heroe.get();
         Optional<HeroePoder> poder = powerRepository.findById(heroe1.getNombre());
-        System.out.println();
         heroe1.setHeroePoder(poder.get());
         return Optional.ofNullable(heroe1);
     }

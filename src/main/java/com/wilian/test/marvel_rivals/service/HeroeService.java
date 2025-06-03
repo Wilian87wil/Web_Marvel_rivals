@@ -17,7 +17,7 @@ public interface HeroeService {
 
     Optional<Heroe> recoveryHero(Integer id);
 
-    Optional<List<Heroe>> HerofindAll();
+    List<Heroe> HerofindAll();
 //METHOS USER
     Optional<User> EditUser(Integer id , User user);
 

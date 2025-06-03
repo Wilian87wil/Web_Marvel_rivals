@@ -21,108 +21,15 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
     //
-      this.servicesHero.heroTest(38).subscribe({
-        next:(respuesta)=>{
-          this.hero=respuesta;
-          
-          this.heros.push(this.hero);          
-        },
-        error:(err)=>{},
-      })
+      this.servicesHero.heroAll().subscribe({
 
-      const heroe=new Hero()
-      heroe.nombre="spiderman"
-      heroe.rol="duelista"
-      heroe.lore="Es peter parket"
-      heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-      heroe.descripcion="es spiderman"
-      this.heros.push(heroe);
-      heroe.nombre="spiderman"
-      heroe.rol="duelista"
-      heroe.lore="Es peter parket"
-      heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-      heroe.descripcion="es spiderman"
-      this.heros.push(heroe);
-      heroe.nombre="spiderman"
-      heroe.rol="duelista"
-      heroe.lore="Es peter parket"
-      heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-      heroe.descripcion="es spiderman"
-      this.heros.push(heroe);
-      heroe.nombre="spiderman"
-      heroe.rol="duelista"
-      heroe.lore="Es peter parket"
-      heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-      heroe.descripcion="es spiderman"
-      this.heros.push(heroe);
-      heroe.nombre="spiderman"
-      heroe.rol="duelista"
-      heroe.lore="Es peter parket"
-      heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-      heroe.descripcion="es spiderman"
-      this.heros.push(heroe);
-      heroe.nombre="spiderman"
-      heroe.rol="duelista"
-      heroe.lore="Es peter parket"
-      heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-      heroe.descripcion="es spiderman"
-      this.heros.push(heroe);
-      heroe.nombre="spiderman"
-      heroe.rol="duelista"
-      heroe.lore="Es peter parket"
-      heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-      heroe.descripcion="es spiderman"
-      this.heros.push(heroe);
-        heroe.nombre="spiderman"
-        heroe.rol="duelista"
-        heroe.lore="Es peter parket"
-        heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-        heroe.descripcion="es spiderman"
-        this.heros.push(heroe);
-        heroe.nombre="spiderman"
-        heroe.rol="duelista"
-        heroe.lore="Es peter parket"
-        heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-        heroe.descripcion="es spiderman"
-        this.heros.push(heroe);
-        heroe.nombre="spiderman"
-        heroe.rol="duelista"
-        heroe.lore="Es peter parket"
-        heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-        heroe.descripcion="es spiderman"
-        this.heros.push(heroe);
-        heroe.nombre="spiderman"
-        heroe.rol="duelista"
-        heroe.lore="Es peter parket"
-        heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-        heroe.descripcion="es spiderman"
-        this.heros.push(heroe);
-        heroe.nombre="spiderman"
-        heroe.rol="duelista"
-        heroe.lore="Es peter parket"
-        heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-        heroe.descripcion="es spiderman"
-        this.heros.push(heroe);
-        heroe.nombre="spiderman"
-        heroe.rol="duelista"
-        heroe.lore="Es peter parket"
-        heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-        heroe.descripcion="es spiderman"
-        this.heros.push(heroe);
-        heroe.nombre="spiderman"
-        heroe.rol="duelista"
-        heroe.lore="Es peter parket"
-        heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spidy-marvel-rivals.mp4"
-        heroe.descripcion="es spiderman"
-        this.heros.push(heroe);
-        heroe.nombre="iro-man"
-        heroe.id=1
-        heroe.rol="duelista"
-        heroe.lore="Es peter parket"
-        heroe.url_image="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spider-man-marvel-rivals.jpg"
-        heroe.descripcion="es spiderman"
-        heroe.url_video="https://wilian-rivals.s3.us-east-2.amazonaws.com/marvel-rivals/spiderman/spider-man-video.mp4";
-        this.heros.push(heroe);
+        next:(respuesta)=>{
+          this.heros=respuesta;
+                    
+        },
+
+        error:(error)=>{}
+      })
       
   }
 
