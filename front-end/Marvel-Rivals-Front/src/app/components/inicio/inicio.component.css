@@ -56,7 +56,7 @@ video{
 
 .button-class{
   position: absolute;
-  margin-top: 80%;
+  margin-top: 140px;
   margin-left: 31%;
   transform: scale(0.8);
 }
@@ -92,6 +92,7 @@ p{
   transform: scale(0.2);
   transition: transform 0.5s ease-in-out;
   margin-top: 5%;
+  z-index: 999;
 }
 
 .cuadro-err {
@@ -160,11 +161,58 @@ p{
   margin-top: 23%;
   margin-left: 50%;
   z-index: 3;
+  text-align: center;
 }
 
-.mensajeErr-register{
-  position: absolute;
-  margin-top: 450px;
-  margin-left: 50%;
-  transform: translate(-50%,-50%) scale(0.7);
+
+.galacta-1{
+  position: absolute; 
+  margin-left: 500px;
+  margin-top: 220px;
+  transform: scale(1.3);
+}
+
+.galacta-blur-1{
+  position: absolute; 
+  margin-left: 420px;
+  margin-top: 240px;
+  transform: scale(1.3);  
+  filter: brightness(0%) blur(15px);
+  z-index: -1;
+  rotate: -5deg; 
+  opacity: 90%;
+}
+
+.galacta-2{
+position: absolute; 
+margin-left: 1240px;
+margin-top: 470px;
+}
+
+.galacta-blur-2{
+position: absolute; 
+margin-left: 1330px;
+margin-top: 470px;
+filter: brightness(0%) blur(15px);
+z-index: -1;
+rotate: 5deg; 
+opacity: 90%;
+}
+
+.galacta-3{
+position: absolute;
+margin-top: 770px;
+margin-left: 500px;
+scale: 1.2;
+}
+
+.galacta-blur-3{
+position: absolute;
+margin-top: 770px;
+margin-left: 430px;
+scale: 1.2;
+filter: brightness(0%) blur(15px);
+z-index: -1;
+rotate: -5deg; 
+opacity: 90%;
 }

@@ -1,1 +1,16 @@
+<img src="/extras/perfil.png" style="position:absolute;z-index: 999;scale: 0.1;
+margin-top: -340px; margin-left: 1400px;" *ngIf="user.nombre">
+<div style="position: relative; overflow: visible;z-index: 999;height: 0px;">
+<small style="position: relative;top: -66px;left: 1730px;z-index: 999;" *ngIf="user.nombre">name: {{user.nombre}}</small>
+</div>
+<div style="width:90px;height: 40px; position: absolute;z-index: 999 ;margin-top: -70px;
+margin-left: 360px;cursor: pointer; " (click)="home()" *ngIf="user.nombre"></div>
+<div style="width: 89px;height: 40px; position: absolute;z-index: 999 ;margin-top: -70px;
+margin-left: 560px;cursor: pointer;" (click)="heros()" *ngIf="user.nombre"></div>
+<div style="width: 100px;height: 40px; position: absolute;z-index: 999 ;margin-top: -70px;
+margin-left: 780px;cursor: pointer;" (click)="logout()" *ngIf="user.nombre"></div>
+<div style="width: 1px; height: 80px; position: absolute; background-color: white; margin-left: 1080px;opacity: 0.3;margin-top: -90px;z-index: 999;" *ngIf="user.nombre"></div>
+<h1 style="position: absolute;z-index: 999;margin-top: -70px;font-size: 25px;margin-left: 1120px;" *ngIf="user.nombre">CLOSE ACCOUNT</h1>
+<div style="width: 230px; height: 40px; position: absolute;z-index: 999; margin-left: 1110px; margin-top: -70px; cursor: pointer;" (click)="closeAccount()" *ngIf="user.nombre"></div>
+<div style="width: 50px;height: 50px; position: absolute; cursor: pointer;z-index: 999;margin-left: 990px;" (click)="LoginWhitGoogle()" [ngStyle]="{'margin-top':user.nombre?'-76px':'-170px'}"></div>
 <router-outlet></router-outlet>

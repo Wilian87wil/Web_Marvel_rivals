@@ -5,6 +5,7 @@ import com.wilian.test.marvel_rivals.models.mySql.User;
 import com.wilian.test.marvel_rivals.service.HeroeService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
@@ -32,7 +33,6 @@ public class ApiController {
 
     @PostMapping("/find-user")
     public ResponseEntity<User> Users(@RequestBody User user){
-        System.out.println("Solicitud recibida en buscarUser: " + user.getEmail() + " | " + user.getPassword());
         if (user.getId()==null || user.getId()<0){
             if ((user.getPassword()==null || user.getPassword().isEmpty()) ||
                     (user.getEmail()==null||user.getEmail().isEmpty())){
@@ -40,10 +40,8 @@ public class ApiController {
             }else {
                 Optional<User> user1 = service.findUser(user.getPassword(), user.getEmail());
                 if (user1.isPresent()){
-                    System.out.println("Entro aqui 1");
                     return ResponseEntity.ok(user1.get());
                 }else {
-                    System.out.println("Entro aqui 2");
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
                 }
             }
@@ -60,13 +58,10 @@ public class ApiController {
         }else{
             Optional<User> user1 = service.registerUser(user.getNombre(), user.getPassword(), user.getEmail());
             if (user1.isPresent()){
-                System.out.println(user1.get().getNombre() + " || " + user1.get().getEmail() + " || el usuario del services lo que esta devolviendo");
                 if (Objects.equals(user1.get().getNombre(),"Ya existe el nombre que colocaste, utiliza otro porfavor")){
-                     System.out.println("Cae aqui nombre igual");
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(user1.get());
                 }
                 if (Objects.equals(user1.get().getEmail(),("Ya existe el email que colocaste, utiliza otro porfavor"))) {
-                     System.out.println("Cae aqui email igual");
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(user1.get());
                 }
                 return ResponseEntity.ok(user1.get());
@@ -76,6 +71,39 @@ public class ApiController {
             }
         }
 
+    }
+
+    @DeleteMapping("/delete-user/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable Integer id){
+        Optional<User> user = service.deletedUser(id);
+        if (user.isPresent()){
+            return ResponseEntity.ok("Usuario Eliminado Correctamente.");
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado.");
+    }
+
+    @PostMapping("/recover-to-user")
+    public ResponseEntity<User> RecoverUser(@RequestBody User user){
+        if (user!=null && !user.getNombre().isEmpty() && !user.getEmail().isEmpty()){
+            Optional<User> user1 = service.recoverUser(user.getNombre(), user.getEmail());
+            if (user1.isPresent()){
+                return ResponseEntity.ok(user1.get());
+            }else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @GetMapping("/find-user/{id}")
+    public ResponseEntity<User> findUser(@PathVariable("id")Integer id){
+        Optional<User> user = service.findUser(id);
+        if (user.isPresent()){
+            return ResponseEntity.ok(user.get());
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     //METHODS API HERO

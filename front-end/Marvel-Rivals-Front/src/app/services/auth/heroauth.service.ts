@@ -34,6 +34,13 @@ export class HeroauthService {
       return false;
     }
   }
+
+  DeleteHero(){
+    const hero =sessionStorage.getItem('hero');
+    if(hero){
+      sessionStorage.removeItem('hero');
+    }
+  }
 }
 //Serializador the Map in Json
 function replacer(key:string,value:any){

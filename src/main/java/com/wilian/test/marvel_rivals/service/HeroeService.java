@@ -23,9 +23,11 @@ public interface HeroeService {
 
     Optional<User> deletedUser(Integer id);
 
-    Optional<UserBackup> recoverUserId(Integer id);
+    Optional<User> findUser(Integer id);
 
     Optional<User> findUser(String password, String email);
 
     Optional<User> registerUser(String name,String password,String email);
+
+    Optional<User> recoverUser(String name, String email);
 }

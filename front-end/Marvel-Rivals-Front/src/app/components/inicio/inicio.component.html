@@ -4,12 +4,39 @@
   <video autoplay loop disablePictureInPicture [ngStyle]="{'opacity':!ocultar?'0.5':'1'}">
     <source src="/video/intro-marvel.mp4" type="video/mp4">
   </video>
-  <!--contenedor login-->
-  <div class="content-login" *ngIf="userlogin">
+  
+  <div class="content-logout" *ngIf="userlogin">
+    <div>
+      <img src="/extras/mini-galacta-1.jpg" class="galacta-1">
+      <img src="/extras/mini-galacta-1.jpg" class="galacta-blur-1">
+      <img src="/extras/cuadro-texto-comic.png" style="position: absolute;scale: 0.4;margin-left: 460px;transform: scaleX(1.5); margin-top: -100px;" >
+      <div style="width: 260px;height: 100px;position: absolute;margin-left: 643px;margin-top: 40px;"><h1 style="color: black;font-size: 25px;padding-left: 20px;
+      padding-top: 12px;text-transform: uppercase;">hola viajero, ya estas logeado</h1></div>
+      <img src="/extras/boton-de-home.png" style="position: absolute;scale: 0.3;margin-left: 130px;margin-top: -160px; cursor: pointer; clip-path: inset(400px 330px 420px 250px); transition: scale 0.2s ease-in-out;" [ngStyle]="{'scale':hover?'0.35':'0.3'}">
+      <div style="width: 260px; height: 54px;position: absolute; transform: skew(-26deg);margin-top: 320px;margin-left: 753px; cursor: pointer;transition: scale 0.2s ease-in-out;" (mouseenter)="hover=true" (mouseleave)="hover=false" [ngStyle]="{'border':hover?'3px yellow solid':'','scale':hover?'1.15':'1'}" (click)="RouterHome()"></div>
+    
+      
+    </div>
 
+    <div>
+      <img src="/extras/mini-galacta-2.jpg" class="galacta-2">
+      <img src="/extras/mini-galacta-2.jpg" class="galacta-blur-2">
+      <img src="/extras/cuadro-texto-comic-2.png" style="position: absolute;scale: 0.3;margin-left: 1000px;transform: scaleX(2); margin-top: 160px;" >
+      <div style="width: 400px;height: 100px;position: absolute;margin-left: 1100px; margin-top: 330px;
+      padding-top: 35px;padding-left: 38px; rotate: -5deg;"><h1 style="color: black; font-size: 30px;">YA TE VAS VIAJERO?</h1></div>
+      <img src="/extras/boton-de-logout.png" style="position: absolute;scale: 0.3;margin-left: 340px;margin-top: 80px; clip-path: inset(400px 330px 420px 250px); cursor: pointer; transition: scale 0.2s ease-in-out;" [ngStyle]="{'scale':hover2?'0.35':'0.3'}">
+      <div style="width: 260px; height: 54px;position: absolute; transform: skew(-26deg);margin-top: 560px;margin-left: 960px; cursor: pointer;transition: scale 0.2s ease-in-out;" (mouseenter)="hover2=true" (mouseleave)="hover2=false" [ngStyle]="{'border':hover2?'3px yellow solid':'','scale':hover2?'1.15':'1'}" (click)="LogoutandRefresh()"></div>
+    </div>
+    <div>
+      <img src="/extras/mini-galacta-3.jpg" class="galacta-3">
+      <img src="/extras/mini-galacta-3.jpg" class="galacta-blur-3">
+      <img src="/extras/cuadro-texto-comic-3.png" style="position: absolute;scale: 0.7;margin-left: 700px; margin-top: 660px;" >
+      <div style="width: 150px;height: 150px; position: absolute; margin-left: 840px;margin-top: 800px;"><h1 style="color: black; font-size: 20px; text-align: center;">HORA QUE EMPIECE LA ACCIÓN!!</h1></div>
+    </div>
   </div>
-  <div class="content-logout" *ngIf="!userlogin">
-    <div class="image" *ngIf="!ocultar">
+  <!--contenedor login-->
+  <div class="content-login" *ngIf="!userlogin">
+    <div class="image" *ngIf="!ocultar && !recuperar">
 
       <div class="image-marvel">
         <img src="/logo_and_marco/logo-marvel.png" alt="Imagen dinámica">
@@ -36,7 +63,7 @@
                 <label for="password" class="password-label">password:</label>
                 <div>
                   <input id="password" class="input-password" placeholder="password" [(ngModel)]="usuario.password"
-                    name="password">
+                    name="password" type="password">
                 </div>
               </div>
 
@@ -45,6 +72,7 @@
             </div>
 
             <div>
+              <p style="margin-top: -515px;">¿No te acuerdas tu contraseña?<a style="color: #0064fa; cursor: pointer;" (click)="RecuperarCuenta()"> Recuperar</a></p>
               <p>¿No tienes una cuenta? <a (click)="enableRegister()" style="cursor: pointer; color:#0064fa;">Registrate
                   aqui</a></p>
             </div>
@@ -97,7 +125,7 @@
                   <label for="nombre" class="nombre-label">nombre:</label>
                   <div>
                     <input id="nombre" class="input-nombre" placeholder="nombre" [(ngModel)]="usuario.nombre"
-                      name="nombre">
+                      name="nombre" >
                   </div>
                 </div>
 
@@ -112,7 +140,7 @@
                   <label for="password" class="password-label">password:</label>
                   <div>
                     <input id="password" class="input-password" placeholder="password" [(ngModel)]="usuario.password"
-                      name="password">
+                      name="password" type="password">
                   </div>
                 </div>
 
@@ -128,5 +156,49 @@
         </div>
       </div>
     </div>
+    <!--RECUPERAR CUENTA-->
+    <div class="image" *ngIf="!ocultar && recuperar">
+
+      <div class="image-marvel">
+        <img src="/logo_and_marco/logo-marvel.png" alt="Imagen dinámica">
+      </div>
+
+      <div class="marco-marvel" *ngIf="!showRegister">
+
+        <img src="/logo_and_marco/marco-login.png" alt="Imagen dinámica">
+
+        <div>
+          <label class="login-text">Recuperar Cuenta</label>
+
+          <form (ngSubmit)="onSubmit()">
+            <div class="login-container">
+
+              <div>
+                <label for="email" class="email-label">email:</label>
+                <div>
+                  <input id="email" class="input-email" placeholder="email" [(ngModel)]="usuario.email" name="email">
+                </div>
+              </div>
+
+              <div>
+                  <label for="nombre" class="nombre-label">nombre:</label>
+                  <div>
+                    <input id="nombre" class="input-nombre" placeholder="nombre" [(ngModel)]="usuario.nombre"
+                      name="nombre" >
+                  </div>
+              </div>
+
+              <button class="button-class" type="submit" style="margin-left: 40px;">RECUPERAR</button>
+
+            </div>
+
+            <div>
+              <p style="margin-top: -515px;">¿Te acordaste de tu contraseña?<a style="color: #0064fa; cursor: pointer;" (click)="RecuperarCuenta()"> Login</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
+  
 </div>

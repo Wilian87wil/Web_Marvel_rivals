@@ -19,7 +19,6 @@ public class UserBackup {
 
     private String email_respaldo;
 
-    private String pasword_email_respaldo;
 
     private Date fecha_registro_eliminación;
 
@@ -63,14 +62,6 @@ public class UserBackup {
 
     public void setEmail_respaldo(String email_respaldo) {
         this.email_respaldo = email_respaldo;
-    }
-
-    public String getPasword_email_respaldo() {
-        return pasword_email_respaldo;
-    }
-
-    public void setPasword_email_respaldo(String pasword_email_respaldo) {
-        this.pasword_email_respaldo = pasword_email_respaldo;
     }
 
     public Date getFecha_registro_eliminación() {

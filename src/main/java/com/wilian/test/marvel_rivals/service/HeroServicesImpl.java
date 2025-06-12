@@ -63,6 +63,22 @@ public class HeroServicesImpl implements HeroeService{
     }
 
     @Override
+    public Optional<User> recoverUser(String name, String email) {
+        Optional<UserBackup> userBackup = userDeletedRepository.findUserBackup(name, email);
+        if (userBackup.isPresent()){
+            UserBackup backup = userBackup.get();
+            backup.setAccion("RECUPERAR");
+            userDeletedRepository.save(backup);
+        }else {
+            return Optional.empty();
+        }
+        userDeletedRepository.DeleteUserBackup(name,email);
+
+        return userRepository.BuscarUserNameEmail(name, email);
+
+    }
+
+    @Override
     public Optional<User> EditUser(Integer id, User user) {
         Optional<User> UserFound = userRepository.findById(id);
         if (UserFound.isPresent()){
@@ -80,18 +96,16 @@ public class HeroServicesImpl implements HeroeService{
     @Override
     public Optional<User> deletedUser(Integer id) {
         Optional<User> userfind = userRepository.findById(id);
-        userRepository.deleteById(id);
-        return userfind;
+        if (userfind.isPresent()){
+            userRepository.deleteById(id);
+            return userfind;
+        }
+        return Optional.empty();
     }
 
     @Override
-    public Optional<UserBackup> recoverUserId(Integer id) {
-        return userDeletedRepository.findById(id)
-                .map(userBackup -> {
-                    userBackup.setAccion("RECUPERAR");
-                    userDeletedRepository.deleteById(id);
-                    return userBackup;
-                });
+    public Optional<User> findUser(Integer id) {
+        return userRepository.findById(id);
     }
 
 

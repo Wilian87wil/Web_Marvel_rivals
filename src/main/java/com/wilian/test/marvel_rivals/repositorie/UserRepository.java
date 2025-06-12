@@ -18,4 +18,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     @Query("select u from User u where u.email= :email")
     Optional<User> DebugUserEmail(@Param("email")String email);
 
+    @Query("select u from User u where u.nombre= :nombre and u.email= :email")
+    Optional<User> BuscarUserNameEmail(@Param("nombre")String nombre,@Param("email")String email);
+
 }

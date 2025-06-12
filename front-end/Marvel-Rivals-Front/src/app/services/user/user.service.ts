@@ -18,4 +18,12 @@ export class UserService {
   CreateUser(user:User):Observable<User>{
     return this.http.post<User>(`${this.baseUrl}/register-user`,user);
   }
+
+  DeleteUser(id:Number):Observable<string>{
+    return this.http.delete(`${this.baseUrl}/delete-user/${id}`, {responseType: 'text'});
+  }
+
+  RecoverUser(user:User):Observable<User>{
+    return this.http.post<User>(`${this.baseUrl}/recover-to-user`,user);
+  }
 }
