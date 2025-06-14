@@ -9,11 +9,10 @@
     <div>
       <img src="/extras/mini-galacta-1.jpg" class="galacta-1">
       <img src="/extras/mini-galacta-1.jpg" class="galacta-blur-1">
-      <img src="/extras/cuadro-texto-comic.png" style="position: absolute;scale: 0.4;margin-left: 460px;transform: scaleX(1.5); margin-top: -100px;" >
-      <div style="width: 260px;height: 100px;position: absolute;margin-left: 643px;margin-top: 40px;"><h1 style="color: black;font-size: 25px;padding-left: 20px;
-      padding-top: 12px;text-transform: uppercase;">hola viajero, ya estas logeado</h1></div>
-      <img src="/extras/boton-de-home.png" style="position: absolute;scale: 0.3;margin-left: 130px;margin-top: -160px; cursor: pointer; clip-path: inset(400px 330px 420px 250px); transition: scale 0.2s ease-in-out;" [ngStyle]="{'scale':hover?'0.35':'0.3'}">
-      <div style="width: 260px; height: 54px;position: absolute; transform: skew(-26deg);margin-top: 320px;margin-left: 753px; cursor: pointer;transition: scale 0.2s ease-in-out;" (mouseenter)="hover=true" (mouseleave)="hover=false" [ngStyle]="{'border':hover?'3px yellow solid':'','scale':hover?'1.15':'1'}" (click)="RouterHome()"></div>
+      <img src="/extras/cuadro-texto-comic.png" class="cuadro-texto-comic" >
+      <div class="contenedor-text-1"><h1 class="text-1">hola viajero, ya estas logeado</h1></div>
+      <img src="/extras/boton-de-home.png" class="boton-home" [ngStyle]="{'scale':hover?'0.35':'0.3'}">
+      <div class="div-animado-1" (mouseenter)="hover=true" (mouseleave)="hover=false" [ngStyle]="{'border':hover?'3px yellow solid':'','scale':hover?'1.15':'1'}" (click)="RouterHome()"></div>
     
       
     </div>
@@ -21,17 +20,16 @@
     <div>
       <img src="/extras/mini-galacta-2.jpg" class="galacta-2">
       <img src="/extras/mini-galacta-2.jpg" class="galacta-blur-2">
-      <img src="/extras/cuadro-texto-comic-2.png" style="position: absolute;scale: 0.3;margin-left: 1000px;transform: scaleX(2); margin-top: 160px;" >
-      <div style="width: 400px;height: 100px;position: absolute;margin-left: 1100px; margin-top: 330px;
-      padding-top: 35px;padding-left: 38px; rotate: -5deg;"><h1 style="color: black; font-size: 30px;">YA TE VAS VIAJERO?</h1></div>
-      <img src="/extras/boton-de-logout.png" style="position: absolute;scale: 0.3;margin-left: 340px;margin-top: 80px; clip-path: inset(400px 330px 420px 250px); cursor: pointer; transition: scale 0.2s ease-in-out;" [ngStyle]="{'scale':hover2?'0.35':'0.3'}">
-      <div style="width: 260px; height: 54px;position: absolute; transform: skew(-26deg);margin-top: 560px;margin-left: 960px; cursor: pointer;transition: scale 0.2s ease-in-out;" (mouseenter)="hover2=true" (mouseleave)="hover2=false" [ngStyle]="{'border':hover2?'3px yellow solid':'','scale':hover2?'1.15':'1'}" (click)="LogoutandRefresh()"></div>
+      <img src="/extras/cuadro-texto-comic-2.png" class="cuadro-text-comic-2" >
+      <div class="contenedor-text-2"><h1 class="text-2">YA TE VAS VIAJERO?</h1></div>
+      <img src="/extras/boton-de-logout.png" class="button-logout" [ngStyle]="{'scale':hover2?'0.35':'0.3'}">
+      <div class="div-animado-2" (mouseenter)="hover2=true" (mouseleave)="hover2=false" [ngStyle]="{'border':hover2?'3px yellow solid':'','scale':hover2?'1.15':'1'}" (click)="LogoutandRefresh()"></div>
     </div>
     <div>
       <img src="/extras/mini-galacta-3.jpg" class="galacta-3">
       <img src="/extras/mini-galacta-3.jpg" class="galacta-blur-3">
-      <img src="/extras/cuadro-texto-comic-3.png" style="position: absolute;scale: 0.7;margin-left: 700px; margin-top: 660px;" >
-      <div style="width: 150px;height: 150px; position: absolute; margin-left: 840px;margin-top: 800px;"><h1 style="color: black; font-size: 20px; text-align: center;">HORA QUE EMPIECE LA ACCIÓN!!</h1></div>
+      <img src="/extras/cuadro-texto-comic-3.png" class="cuadro-text-comic-3" >
+      <div class="contenedor-text-3"><h1 class="text-3">HORA QUE EMPIECE LA ACCIÓN!!</h1></div>
     </div>
   </div>
   <!--contenedor login-->
@@ -53,14 +51,14 @@
             <div class="login-container">
 
               <div>
-                <label for="email" class="email-label">email:</label>
+                <label for="email" class="text-label" >Email:</label>
                 <div>
                   <input id="email" class="input-email" placeholder="email" [(ngModel)]="usuario.email" name="email">
                 </div>
               </div>
 
               <div>
-                <label for="password" class="password-label">password:</label>
+                <label for="password" class="text-label">Password:</label>
                 <div>
                   <input id="password" class="input-password" placeholder="password" [(ngModel)]="usuario.password"
                     name="password" type="password">
@@ -117,12 +115,12 @@
           <img src="/logo_and_marco/marco-login.png" alt="Imagen dinámica">
 
           <div>
-            <label class="login-text">REGISTER</label>
+            <label class="Register-text">REGISTER</label>
             <form (ngSubmit)="onSubmitRegister()">
 
               <div class="login-container">
                 <div>
-                  <label for="nombre" class="nombre-label">nombre:</label>
+                  <label for="nombre" class="text-label">Nombre:</label>
                   <div>
                     <input id="nombre" class="input-nombre" placeholder="nombre" [(ngModel)]="usuario.nombre"
                       name="nombre" >
@@ -130,14 +128,14 @@
                 </div>
 
                 <div>
-                  <label for="email" class="email-label">email:</label>
+                  <label for="email" class="text-label">Email:</label>
                   <div>
                     <input id="email" class="input-email" placeholder="email" [(ngModel)]="usuario.email" name="email">
                   </div>
                 </div>
 
                 <div>
-                  <label for="password" class="password-label">password:</label>
+                  <label for="password" class="text-label">Password:</label>
                   <div>
                     <input id="password" class="input-password" placeholder="password" [(ngModel)]="usuario.password"
                       name="password" type="password">
@@ -174,14 +172,14 @@
             <div class="login-container">
 
               <div>
-                <label for="email" class="email-label">email:</label>
+                <label for="email" class="text-label">Email:</label>
                 <div>
                   <input id="email" class="input-email" placeholder="email" [(ngModel)]="usuario.email" name="email">
                 </div>
               </div>
 
               <div>
-                  <label for="nombre" class="nombre-label">nombre:</label>
+                  <label for="nombre" class="text-label">Nombre:</label>
                   <div>
                     <input id="nombre" class="input-nombre" placeholder="nombre" [(ngModel)]="usuario.nombre"
                       name="nombre" >

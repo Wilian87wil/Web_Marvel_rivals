@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit{
       this.heros=this.herosSave;      
     }else{
     this.heros = this.heros.filter(h => 
-    h.nombre.toLowerCase().includes(input.value)
+    h.nombre.toLowerCase().includes(input.value.toLowerCase())
     );
     }
   }

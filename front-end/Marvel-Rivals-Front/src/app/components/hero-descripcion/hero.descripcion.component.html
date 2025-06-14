@@ -5,15 +5,13 @@
     </div>
     <div>
         @if (hero.nombre.length>12) {
-        <div style="width: 400px;height: 150px;position: absolute;z-index:3; margin-top: -800px;margin-left: 270px;font-size: 60px;
-        text-transform: uppercase;text-align: left;color: #0b0a0c;">{{hero.nombre}}</div>
+        <div class="heroe-name-1">{{hero.nombre}}</div>
         }@else {
-        <div style="width: 400px;height: 150px;position: absolute;z-index:3; margin-top: -800px;margin-left: 270px;font-size: 60px;
-        text-transform: uppercase;text-align: left;color: #0b0a0c;padding-top: 30px;">{{hero.nombre}}</div>   
+        <div class="heroe-name-2">{{hero.nombre}}</div>   
         }        
 
         @if (hero.nombre==='doctor strange') {
-            <img [src]="hero.urls_img.logo_url" style="position: absolute;z-index: 999; margin-left: 40px; margin-top: -800px;">
+            <img [src]="hero.urls_img.logo_url" class="img-logo-strange">
         }@else {
         <div class="img-logo-png">
             <img [src]="hero.urls_img.logo_url" alt="imagen-logo"/>
@@ -23,35 +21,27 @@
     </div>
 
     <div class="description-hero">
-        <div style="width: 200px; height: 50px; background-color: rgb(48, 66, 90);text-align: center;font-size: 20px;">
-            <p style="padding-top: 10px;">{{hero.nombre}}</p>
+        <div class="contenedor-text-name">
+            <p class="heroe-name-1-small">{{hero.nombre}}</p>
         </div>
-        <div style="width: 910px; height: 5px; background-color: rgb(48, 66, 90); margin-top: -5px;margin-left: 200px;"></div>
-        <h1 class="description-text" style="color: rgb(0, 0, 0); font-size: 40px;">{{hero.descripcion}}</h1>
+        <div class="contenedor-text-description"></div>
+        <h1 class="description-text" >{{hero.descripcion}}</h1>
     </div>
 </div>
 <!--flecha apuntando abajo-->
 <div>
-        <div style="width: 5px; height: 30px; background-color: white;
-        left: 0px; top: 0px;position: absolute; margin-top: 650px;margin-left: 510px;"></div>
-        <div style="width: 5px; height: 30px; background-color: white;
-         left: 0px; top: 0px;position: absolute; margin-top: 700px;margin-left: 510px;"></div> 
-        <div style="width: 5px; height: 30px; background-color: white;
-         left: 0px; top: 0px;position: absolute; margin-top: 750px;margin-left: 510px;"></div>
-        <div style="width: 5px; height: 30px; background-color: white;
-        left: 0px; top: 0px;position: absolute; margin-top: 800px;margin-left: 510px;"></div> 
-        <div style="width: 5px; height: 30px; background-color: white;
-        left: 0px; top: 0px;position: absolute; margin-top: 820px;margin-left: 520px;
-        rotate: 50deg;"></div> 
-        <div style="width: 5px; height: 30px; background-color: white;
-        left: 0px; top: 0px;position: absolute; margin-top: 820px;margin-left: 500px;
-        rotate: -50deg;"></div> 
+        <div class="parte-linea-1"></div>
+        <div class="parte-linea-2"></div> 
+        <div class="parte-linea-3"></div>
+        <div class="parte-linea-4"></div> 
+        <div class="parte-linea-5"></div> 
+        <div class="parte-linea-6"></div> 
       
 </div>
 <!--line of separation-->
-<div style="position: relative; width: 100%; height: 10px;" [ngStyle]="{'background-color': hero.colors.color_1}"></div>
+<div class="line-of-separation" [ngStyle]="{'background-color': hero.colors.color_1}"></div>
 <!--2 page of web-->
-<div style="position: relative; width: 100%; height: 1000px;background-color: rgb(45, 52, 65);">
+<div class="page-2">
     <h1 class="text-abilities">ABILITIES</h1>
     <!--Cuadro Text-->
     <div>
@@ -61,40 +51,32 @@
         <div class="cuadro-text-abilities" [ngStyle]="{'background-color': hero.colors.color_2}"></div>
         
         <div style="cursor: pointer; " (click)="cuadro_description('Base Stats','',stats,null)">
-            <h1 style="position: absolute;margin-top: 237px;color: black;margin-left: 610px;z-index: 2;
-            font-size: 18px;">Base Stats</h1>
-            <div style="position: absolute; width: 130px;height: 40px;background-color: #cff0ff;z-index: 1;
-            margin-top: 230px; margin-left: 590px;"></div>
-            <div style="position: absolute; width: 5px; height: 20px;background-color: black;
-            border-radius: 0px; rotate: -30deg;margin-top: 236px;margin-left: 694px;z-index: 2;
-            scale: 0.5;"></div>
-            <div style="position: absolute; width: 5px; height: 20px;background-color: black;
-            border-radius: 0px; rotate: 30deg;margin-top: 243px;margin-left: 694px;z-index: 2;
-            scale: 0.5;"></div>
+            <h1 class="text-base-stat">BASE STATS</h1>
+            <div class="paralelogramo-0"></div>
+            <div class="parte-flecha-1"></div>
+            <div class="parte-flecha-2"></div>
         </div>
-        
-        
     </div>
     <!--cuadro-abilities-->
     <div class="abilities-cuadro">
 
         <!--basic Attacks-->
-        <div style="display: flex;flex-direction: column;">
-            <div style="width: 650px;height: 25px;background-color:#778bb1;">
-                <h1 style="font-size: 20px;text-transform: uppercase;padding-left: 10px;">{{hero.heroePoder.poderes[0].nombre}}</h1>
+        <div class="contenedor-flex-basic">
+            <div class="contenedor-text-basic-attack">
+                <h1 class="text-attack">{{hero.heroePoder.poderes[0].nombre}}</h1>
             </div>
             
             <div *ngFor="let typeattack of hero.heroePoder.poderes[0].extra.get('attacks');let i=index">
                     <div style="cursor: pointer;" (mouseenter)="hover=i" (mouseleave)="hover=null" [ngStyle]="{'border':hover===i?'3px rgb(255, 251, 0) solid':''}" (click)="cuadro_description(typeattack.name,typeattack.key,null,typeattack.stats[0])">
-                        <img [src]="typeattack.url_image" style="position: absolute;z-index: 999;margin-left: 140px;scale: 0.8;margin-top: 5px;">                        
+                        <img [src]="typeattack.url_image" class="img-basic-attack">                        
                         @if (typeattack.key==='click') {
-                            <div style=" z-index: 1;position: absolute; width: 130px;object-position: center;scale: 0.2;margin-top: -60px;"><img src="/button/mouse-click.png" alt="mouse-click"></div>
+                            <div class="img-click"><img src="/button/mouse-click.png" alt="mouse-click"></div>
                         }@else {
-                            <div style=" z-index: 1;position: absolute; width: 130px;object-position: center;scale: 0.2;margin-top: -60px;"><img src="/button/mouse-anticlick.png" alt="mouse-click"></div>
+                            <div class="img-anticlick"><img src="/button/mouse-anticlick.png" alt="mouse-click"></div>
                         }
                         <div>
-                            <div style="width: 650px;height: 80px;background-color: white;">
-                                <div style="width: 130px; height: 80px;background-color: #5b74a0;">
+                            <div class="contenedor-type-attack">
+                                <div class="contenedor-type-attack-2">
                                     <h1 class="text-abilities-name" >{{typeattack.name}}</h1>
                                 </div>
                             </div>
@@ -103,28 +85,28 @@
             </div>
         </div>
         <!--abilities-->
-        <div style="display: flex;flex-direction: column;margin-top: -190px;">
-            <div style="width: 650px;height: 25px;background-color:#778bb1;">
-                <h1 style="font-size: 20px;text-transform: uppercase;padding-left: 10px;">{{hero.heroePoder.poderes[1].nombre}}</h1>
+        <div class="contenedor-flex-abilitie">
+            <div class="contenedor-text-abilities">
+                <h1 class="text-abilitie">{{hero.heroePoder.poderes[1].nombre}}</h1>
             </div>
             
             <div *ngFor="let typeattack of hero.heroePoder.poderes[1].extra.get('abilities');let i=index">
                     <div style="cursor: pointer;" (mouseenter)="hover2=i" (mouseleave)="hover2=null" [ngStyle]="{'border':hover2===i?'3px rgb(255, 251, 0) solid':''}" (click)="cuadro_description(typeattack.name,typeattack.key,null,typeattack.stats[0])">
-                        <img [src]="typeattack.url_image" style="position: absolute;z-index: 999;margin-left: 140px;scale: 0.8;margin-top: 5px;">                        
+                        <img [src]="typeattack.url_image" class="img-type-attack-abilities">                        
                         <div style=" z-index: 1;position: absolute; width: 130px;">
                             @if(typeattack.key==='anti-click'){
-                            <div style=" z-index: 1;position: absolute; width: 130px;object-position: center;scale: 0.2;margin-top: -60px;"><img src="/button/mouse-anticlick.png" alt="mouse-click"></div>
+                            <div class="contenedor-img-anti-click"><img src="/button/mouse-anticlick.png" alt="mouse-click"></div>
                             }@else if (typeattack.key==='click') {
-                            <div style=" z-index: 1;position: absolute; width: 130px;object-position: center;scale: 0.2;margin-top: -60px;"><img src="/button/mouse-click.png" alt="mouse-click"></div>
+                            <div class="contenedor-img-click"><img src="/button/mouse-click.png" alt="mouse-click"></div>
                             }@else {
-                                <h1 style="text-transform: uppercase; font-size: 20px;text-align:center; color: rgb(255, 255, 255);padding-top: 25px;">{{typeattack.key}}</h1>
+                                <h1 class="text-type-attack-key">{{typeattack.key}}</h1>
                             }
                             
                         
                         </div>
                         <div>
-                            <div style="width: 650px;height: 80px;background-color: white;clip-path: inset(0px 0px 0px 0px);">
-                                <div style="width: 130px; height: 80px;background-color: #5b74a0;">
+                            <div class="contenedor-type-attack-abilitie">
+                                <div class="contenedor-type-attack-abilitie-2">
                                     <h1 class="text-abilities-name" >{{typeattack.name}}</h1>
                                 </div>
                             </div>
@@ -133,18 +115,18 @@
             </div>
         </div>
         <!--team Ups-->
-        <div style="display: flex;flex-direction: column;margin-top: -190px;">
-            <div style="width: 650px;height: 25px;background-color:#778bb1;">
-                <h1 style="font-size: 20px;text-transform: uppercase;padding-left: 10px;">{{hero.heroePoder.poderes[2].nombre}}</h1>
+        <div class="contenedor-flex-team-up-abilitie">
+            <div class="contenedor-text-team-up-abilitie">
+                <h1 class="text-team-up-abilitie">{{hero.heroePoder.poderes[2].nombre}}</h1>
             </div>
             
             <div *ngFor="let typeattack of hero.heroePoder.poderes[2].extra.get('team_up_abilities');let i=index">
                     <div style="cursor: pointer;" (mouseenter)="hover3=i" (mouseleave)="hover3=null" [ngStyle]="{'border':hover3===i?'3px rgb(255, 251, 0) solid':''}" (click)="cuadro_description(typeattack.name,typeattack.key,null,typeattack.stats[0])">
-                        <img [src]="typeattack.url_image" style="position: absolute;z-index: 999;margin-left: 140px;scale: 0.8;margin-top: 5px;">                        
-                        <div style=" z-index: 1;position: absolute; width: 130px;"><h1 style="text-transform: uppercase; font-size: 20px;text-align:center; color: rgb(255, 255, 255);padding-top: 25px;">{{typeattack.key}}</h1></div>
+                        <img [src]="typeattack.url_image" class="img-team-up">                        
+                        <div class="contenedor-text-team-up-abilitie-0"><h1 class="texto-team-up-abilitie">{{typeattack.key}}</h1></div>
                         <div>
-                            <div style="width: 650px;height: 80px;background-color: white;clip-path: inset(0px 0px 0px 0px);">
-                                <div style="width: 130px; height: 80px;background-color: #5b74a0;">
+                            <div class="contenedor-type-attack-team-up-abilitie">
+                                <div class="contenedor-type-attack-team-up-abilitie-2">
                                     <h1 class="text-abilities-name" >{{typeattack.name}}</h1>
                                 </div>
                             </div>
@@ -154,38 +136,38 @@
         </div>
     </div>
     <!--picture description-->
-    <div style="display: flex; flex-direction: column;padding-top: 200px; padding-left: 850px;">
+    <div class="picture-description">
 
-        <div style="width: 900px; height: 150px; background-color: rgb(255, 255, 255);">
+        <div class="parte-cuadro-descripcion">
         <!--text description 1-->
            <div *ngIf="text_descrip_2===null">
-            <h1 style="color: black;font-size: 30px; margin-top: 40px;margin-left: 50px; text-transform: uppercase;">{{text_descrip}}</h1>
+            <h1 class="text-base-stat-caudro-description">{{text_descrip}}</h1>
            </div>
         <!--text description 2-->
            <div *ngIf="text_descrip_2!==null">
-            <div style="display: flex;flex-direction: row; grid-gap: 50px;">
-                <h1 style="color: black;font-size: 30px; margin-top: 40px;margin-left: 50px;text-transform: uppercase;">{{text_descrip}}</h1>
+            <div class="paralelogramo-cuadro-description">
+                <h1 class="text-abilitie-cuadro-description">{{text_descrip}}</h1>
                 <div class="paralelogramo" [ngStyle]="{'width':text_descrip_2.length>3?'170px':'100px'}">
                     @if (text_descrip_2==='click') {
-                        <img src="/button/mouse-click.png" style="transform: skew(+20deg) scale(0.19); ">
+                        <img src="/button/mouse-click.png" class="img-click-cuadro-description">
                     }@else if (text_descrip_2==='anti-click') {
-                        <img src="/button/mouse-anticlick.png" alt="mouse-click" style="transform: skew(+20deg) scale(0.19); ">
+                        <img src="/button/mouse-anticlick.png" alt="mouse-click" class="img-anti-click-cuadro-description">
                     }@else {
-                        <h1 style="transform: skew(+20deg); text-transform: uppercase; font-size: 25px;">{{text_descrip_2}}</h1>
+                        <h1 class="text-key-cuadro-description">{{text_descrip_2}}</h1>
                     }
                 </div>
             </div>
            </div>
         </div>
 
-        <div style="width: 900px;height: 590px; background-color: rgb(31, 36, 46); border: solid 1.5px; overflow-y:auto; overflow-x: hidden;">
-            <div style="display: flex; flex-direction: column; gap:50px; margin-top: 30px;margin-left: 4%;" >
+        <div class="contenedor-fondo-cuadro-description">
+            <div class="contenedor-fondo-cuadro-description-2" >
                 @if (stats) {
                     <div *ngFor="let stat of stats">
                         <div>
                             <div class="text-description">{{stat.nombre}}</div>
-                            <div style="width: 800px;height: 2px;background-color: white;"></div>
-                            <h1 style="margin-left:60px; font-size: 40px;margin-top: -50px;margin-left: 750px;">{{stat.cantidad}}</h1>
+                            <div class="linea-fondo-cuadro-description"></div>
+                            <h1 class="class-text-base-stast">{{stat.cantidad}}</h1>
                         </div>
                         
                     </div>
@@ -194,8 +176,8 @@
                         <div *ngFor="let stats_att of stats_attack">
                             <div>
                                 <div class="text-description">{{stats_att[0].replaceAll("_"," ")}}</div>
-                                <div style="width: 800px;height: 2px;background-color: white;"></div>
-                                <h1 style=" font-size: 40px;margin-top: -60px; text-align: center;" [ngStyle]="{'font-size':(''+stats_att[1]).length>3?'15px':'20px','width':(''+stats_att[1]).length>50?'70ch':'20ch','margin-left':(''+stats_att[1]).length<4?'670px':(''+stats_att[1]).length<5?'690px':(''+stats_att[1]).length<15?'680px':(''+stats_att[1]).length>=15 && (''+stats_att[1]).length<50?'650px':'200px','margin-top':(''+stats_att[1]).length>40?'-60px':'-40px'}">{{stats_att[1]}}</h1>    
+                                <div class="linea-fondo-cuadro-description"></div>
+                                <h1 class="class-text-stast" [ngStyle]="{'font-size':(''+stats_att[1]).length>3?'15px':'20px','width':(''+stats_att[1]).length>50?'70ch':'20ch','margin-left':(''+stats_att[1]).length<4?'670px':(''+stats_att[1]).length<5?'690px':(''+stats_att[1]).length<15?'680px':(''+stats_att[1]).length>=15 && (''+stats_att[1]).length<50?'650px':'200px','margin-top':(''+stats_att[1]).length>40?'-60px':'-40px'}">{{stats_att[1]}}</h1>    
                             </div>
                         </div>
                         <div></div>
@@ -204,31 +186,29 @@
                 }
                     
             </div>
-           
         </div>
     </div>
     
 </div>
 <!--line of separation-->
-<div style="position: relative; width: 100%; height: 10px;" [ngStyle]="{'background-color':hero.colors.color_2}"></div>
+<div class="line-of-separation" [ngStyle]="{'background-color':hero.colors.color_2}"></div>
 <!--3 page of web-->
-<div style="position: relative; width: 100%; height: 710px;background-color: #e9edf7; overflow: hidden;">
+<div class="fondo-page-3">
     <div style="position: relative; z-index: 2;">
-        <h1 style="color: black; padding-top: 150px;padding-left: 100px;font-size: 80px;">LORE</h1>
+        <h1 class="text-lore">LORE</h1>
         <div class="picture-pag3" [ngStyle]="{'width':hero.nombre.length>9?'200px':'100px'}">{{hero.nombre}}</div>
-        <div style="width: 850px; height: 2px; background-color: #0b0a0c;margin-left: 95px;"></div>
-        <h1 style="color: black;width: 75ch; font-size: 20px; margin-left: 100px; margin-top: 30px;">{{hero.lore}}</h1>
-     
+        <div class="line-page-3"></div>
+        <h1 class="text-description-lore-page-3">{{hero.lore}}</h1>
     </div>
-    <img src="/extras/marvel-logo.png" style="scale: 0.9; margin-left: -300px;margin-top: -600px;clip-path: inset(200px 200px 0px 0px); display: block; opacity: 0.2;z-index: 0;">
-    <img [src]="hero.urls_img.url_img_logo_pj" style="margin-top: -676px;z-index: 2; position: relative;" >
+    <img src="/extras/marvel-logo.png" class="img-marvel-logo">
+    <img [src]="hero.urls_img.url_img_logo_pj" class="img-personaje-logo-fondo" >
 </div>
-<div style="position: relative; width: 100%; height: 150px;background-color: #0b0a0c;">
+<div class="contenedor-credits">
     <div>
-        <img src="/extras/logo-NeatEase.png" style="transform: scale(0.15);position: absolute;;margin-top: -440px; margin-left: 270px;">
-        <img src="/extras/logo-marvel.png" style="transform: scale(0.10);position: absolute;;margin-top: -440px;margin-left: 400px;">
-        <h1 style="font-size: 15px; margin-left: 980px;padding-top: 40px;">©2025 MARVEL</h1>
-        <h1 style="font-size: 15px; margin-left: 980px;">©1997-2025 NetEase,Inc. All Rights Reserved</h1>
-        <img src="/extras/teen-logo.png" style="transform: scale(0.08);position: absolute;;margin-top: -540px;margin-left: 1300px;">
+        <img src="/extras/logo-NeatEase.png" class="img-logo-NeatEase">
+        <img src="/extras/logo-marvel.png" class="img-logo-marvel">
+        <h1 class="text-copy-marvel">©2025 MARVEL</h1>
+        <h1 class="text-copy-marvel-2">©1997-2025 NetEase,Inc. All Rights Reserved</h1>
+        <img src="/extras/teen-logo.png" class="img-teen-logo">
     </div>
 </div>

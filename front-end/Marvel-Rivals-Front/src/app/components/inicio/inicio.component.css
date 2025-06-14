@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 video{
   position: fixed;
   top: 0;
@@ -40,7 +43,22 @@ video{
   left: 0;
   margin-top: 100%;
   margin-left: 48%;
-  transform: translate(-50%,-50%) scale(3);
+  transform: translate(-50%,-50%) scale(4);
+  padding-top: 25px;
+  font-family: 'Roboto Condensed';
+}
+.Register-text{
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 95%;
+  margin-left: 48%;
+  transform: translate(-50%,-50%) scale(4);
+  padding-top: 25px;
+  font-family: 'Roboto Condensed';
+}
+.text-label{
+  font-family: 'Roboto Condensed';
 }
 .login-container{
   position: absolute;
@@ -59,6 +77,8 @@ video{
   margin-top: 140px;
   margin-left: 31%;
   transform: scale(0.8);
+  font-family: 'Roboto Condensed';
+
 }
 
 .button-class-register{
@@ -66,6 +86,7 @@ video{
   margin-top: 102%;
   margin-left: 28%;
   transform: scale(0.8);
+  font-family: 'Roboto Condensed';
 }
 
 p{
@@ -215,4 +236,110 @@ filter: brightness(0%) blur(15px);
 z-index: -1;
 rotate: -5deg; 
 opacity: 90%;
+}
+.cuadro-texto-comic{
+  position: absolute;
+  scale: 0.4;
+  margin-left: 460px;
+  transform: scaleX(1.5); 
+  margin-top: -100px;
+}
+.contenedor-text-1{
+  width: 260px;
+  height: 100px;
+  position: absolute;
+  margin-left: 643px;
+  margin-top: 40px;
+}
+.text-1{
+  color: black;
+  font-size: 25px;
+  padding-left: 20px;
+  padding-top: 12px;
+  text-transform: uppercase;
+  font-family: 'Bangers';
+  text-align: center;
+}
+.boton-home{
+  position: absolute;
+  scale: 0.3;
+  margin-left: 130px;
+  margin-top: -160px; 
+  cursor: pointer; 
+  clip-path: inset(400px 330px 420px 250px); 
+  transition: scale 0.2s ease-in-out;
+}
+.div-animado-1{
+  width: 260px; 
+  height: 54px;
+  position: absolute; 
+  transform: skew(-26deg);
+  margin-top: 320px;
+  margin-left: 753px; 
+  cursor: pointer;
+  transition: scale 0.2s ease-in-out;
+}
+.cuadro-text-comic-2{
+  position: absolute;
+  scale: 0.3;
+  margin-left: 1000px;
+  transform: scaleX(2); 
+  margin-top: 160px;
+}
+.contenedor-text-2{
+  width: 400px;
+  height: 100px;
+  position: absolute;
+  margin-left: 1100px; 
+  margin-top: 330px;
+  padding-top: 35px;
+  padding-left: 38px; 
+  rotate: -5deg;
+}
+.text-2{
+  color: black; 
+  font-size: 30px;
+  padding-right: 100px;
+  font-family: 'Bangers';
+  text-align: center;
+}
+.button-logout{
+  position: absolute;
+  scale: 0.3;
+  margin-left: 340px;
+  margin-top: 80px; 
+  clip-path: inset(400px 330px 420px 250px); 
+  cursor: pointer; 
+  transition: scale 0.2s ease-in-out;
+}
+.div-animado-2{
+  width: 260px; 
+  height: 54px;
+  position: absolute; 
+  transform: skew(-26deg);
+  margin-top: 560px;
+  margin-left: 960px; 
+  cursor: pointer;
+  transition: scale 0.2s ease-in-out;
+}
+.cuadro-text-comic-3{
+  position: absolute;
+  scale: 0.7;
+  margin-left: 700px; 
+  margin-top: 660px;
+}
+.contenedor-text-3{
+  width: 150px;
+  height: 150px; 
+  position: absolute; 
+  margin-left: 840px;
+  margin-top: 800px;
+}
+.text-3{
+  color: black; 
+  font-size: 20px; 
+  text-align: center;
+  padding-top: 20px;
+    font-family: 'Bangers';
+
 }
