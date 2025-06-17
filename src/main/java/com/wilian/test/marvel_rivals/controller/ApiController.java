@@ -113,6 +113,7 @@ public class ApiController {
         if (heroes.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }else {
+            System.out.println();
             return ResponseEntity.ok(heroes);
         }
     }

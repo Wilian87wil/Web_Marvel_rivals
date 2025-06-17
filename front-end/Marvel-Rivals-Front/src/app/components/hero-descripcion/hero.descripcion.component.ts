@@ -60,4 +60,39 @@ export class HeroDescripcionComponent implements OnInit{
     }
     return '1390'
   }
+
+  getDynamicStyles(value: any): { [key: string]: string } {
+  const text = String(value);
+  const length = text.length;
+
+  // FONT SIZE
+  const fontSize = length > 3 ? '15px' : '20px';
+
+  // WIDTH
+  const width = length > 50 ? '70ch' : '20ch';
+
+  // MARGIN-LEFT
+  let marginLeft = '200px';
+  if (text === 'Charged release, with multiple delayed projectiles') {
+    marginLeft = '650px';
+  } else if (length < 4) {
+    marginLeft = '670px';
+  } else if (length < 5) {
+    marginLeft = '690px';
+  } else if (length < 15) {
+    marginLeft = '680px';
+  } else if (length >= 15 && length < 50) {
+    marginLeft = '650px';
+  }
+
+  // MARGIN-TOP
+  const marginTop = length > 40 ? '-60px' : '-40px';
+
+  return {
+    'font-size': fontSize,
+    'width': width,
+    'margin-left': marginLeft,
+    'margin-top': marginTop
+  };
+}
 }

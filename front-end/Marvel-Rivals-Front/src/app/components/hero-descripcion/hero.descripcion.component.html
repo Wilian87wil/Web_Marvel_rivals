@@ -177,7 +177,7 @@
                             <div>
                                 <div class="text-description">{{stats_att[0].replaceAll("_"," ")}}</div>
                                 <div class="linea-fondo-cuadro-description"></div>
-                                <h1 class="class-text-stast" [ngStyle]="{'font-size':(''+stats_att[1]).length>3?'15px':'20px','width':(''+stats_att[1]).length>50?'70ch':'20ch','margin-left':(''+stats_att[1]).length<4?'670px':(''+stats_att[1]).length<5?'690px':(''+stats_att[1]).length<15?'680px':(''+stats_att[1]).length>=15 && (''+stats_att[1]).length<50?'650px':'200px','margin-top':(''+stats_att[1]).length>40?'-60px':'-40px'}">{{stats_att[1]}}</h1>    
+                                <h1 class="class-text-stast" [ngStyle]="getDynamicStyles(stats_att[1])">{{stats_att[1]}}</h1>    
                             </div>
                         </div>
                         <div></div>
